@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="dem.css">
+
+  <!-- import bootstrap-vue -->
+  <!-- <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" /> -->
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+  <!-- Load Vue followed by BootstrapVue -->
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+  <!-- Load the following for BootstrapVueIcons support -->
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+</head>
+
+<body>
+  <div class="st">
+  </div>
+  <div class="container" id="app">
+
+    <!-- <b-table striped hover :items="list"></b-table> -->
+
+    <!-- Admin -->
+    <h1>Admin</h1>
+    <div>
+      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <datalist id="cars">
+        <option :value="item" v-for="item in searchlist"></option>
+      </datalist>
+      <input type="button" class="add" @click="add" value="新增">
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th>aid</th>
+          <th>sname</th>
+          <th>snum</th>
+          <th>category</th>
+        </tr>
+        <tr v-cloak v-for="(item ,index) of slist">
+          <td>{{index+1}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.province}}</td>
+          <td>
+            <a href="javascript:;" @click="showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="del(index)">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+
+    <!-- Customer -->
+    <h1>Customer</h1>
+    <div>
+      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <datalist id="cars">
+        <option :value="item" v-for="item in searchlist"></option>
+      </datalist>
+      <input type="button" class="add" @click="add" value="新增">
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th>cid</th>
+          <th>cname</th>
+          <th>password</th>
+          <th>cnumber</th>
+        </tr>
+        <tr v-cloak v-for="(item ,index) of slist">
+          <td>{{index+1}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.province}}</td>
+          <td>
+            <a href="javascript:;" @click="showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="del(index)">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+
+    <!-- Goods -->
+    <h1>Goods</h1>
+    <div>
+      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <datalist id="cars">
+        <option :value="item" v-for="item in searchlist"></option>
+      </datalist>
+      <input type="button" class="add" @click="add" value="新增">
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th>gid</th>
+          <th>sid</th>
+          <th>gname</th>
+          <th>category</th>
+          <th>inventory</th>
+          <th>price</th>
+        </tr>
+        <tr v-cloak v-for="(item ,index) of slist">
+          <td>{{index+1}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.province}}</td>
+          <td>
+            <a href="javascript:;" @click="showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="del(index)">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+
+    <!-- Logistics -->
+    <h1>Logistics</h1>
+    <div>
+      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <datalist id="cars">
+        <option :value="item" v-for="item in searchlist"></option>
+      </datalist>
+      <input type="button" class="add" @click="add" value="新增">
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th>lid</th>
+          <th>cid</th>
+          <th>sid</th>
+          <th>number</th>
+          <th>startad</th>
+          <th>endad</th>
+          <th>state</th>
+          <th>addtime</th>
+        </tr>
+        <tr v-cloak v-for="(item ,index) of slist">
+          <td>{{index+1}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.province}}</td>
+          <td>
+            <a href="javascript:;" @click="showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="del(index)">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+
+    <!-- Order -->
+    <h1>Order</h1>
+    <div>
+      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <datalist id="cars">
+        <option :value="item" v-for="item in searchlist"></option>
+      </datalist>
+      <input type="button" class="add" @click="add" value="新增">
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th>oid</th>
+          <th>sid</th>
+          <th>cid</th>
+          <th>gid</th>
+          <th>lid</th>
+          <th>addtime</th>
+          <th>number</th>
+          <th>price</th>
+          <th>state</th>
+        </tr>
+        <tr v-cloak v-for="(item ,index) of slist">
+          <td>{{index+1}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.province}}</td>
+          <td>
+            <a href="javascript:;" @click="showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="del(index)">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+
+    <!-- Shop_user -->
+    <h1>Shop_user</h1>
+    <div>
+      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <datalist id="cars">
+        <option :value="item" v-for="item in searchlist"></option>
+      </datalist>
+      <input type="button" class="add" @click="add" value="新增">
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th>suid</th>
+          <th>sid</th>
+          <th>suname</th>
+          <th>password</th>
+          <th>number</th>
+        </tr>
+        <tr v-cloak v-for="(item ,index) of slist">
+          <td>{{index+1}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.province}}</td>
+          <td>
+            <a href="javascript:;" @click="showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="del(index)">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+
+    <!-- Shop -->
+    <h1>Shop</h1>
+    <div>
+      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <datalist id="cars">
+        <option :value="item" v-for="item in searchlist"></option>
+      </datalist>
+      <input type="button" class="add" @click="add" value="新增">
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th>sid</th>
+          <th>sname</th>
+          <th>snum</th>
+          <th>category</th>
+        </tr>
+        <tr v-cloak v-for="(item ,index) of slist">
+          <td>{{index+1}}</td>
+          <td>{{item.username}}</td>
+          <td>{{item.email}}</td>
+          <td>{{item.sex}}</td>
+          <td>{{item.province}}</td>
+          <td>
+            <a href="javascript:;" @click="showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="del(index)">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+
+    <model :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" :modify="modify"></model>
+  </div>
+
+  <br />
+  <br />
+
+</body>
+
+<!-- <script type="text/javascript" src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script> -->
+<script src='dem.js'></script>
+
+</html>
