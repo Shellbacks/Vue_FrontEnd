@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="dem.css">
+
+  <!-- import bootstrap-vue -->
+  <!-- <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" /> -->
+  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
+
+  <!-- Load Vue followed by BootstrapVue -->
+  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
+
+  <!-- Load the following for BootstrapVueIcons support -->
+  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+</head>
+
+<body>
+  <div class="st">
+  </div>
+  <div class="container" id="app">
+
+    <!-- <b-table striped hover :items="list"></b-table> -->
+
+    <!-- Admin -->
+    <h1>Admin</h1>
+    <div>
+      <input type="text" placeholder="search" @input="Admin_search" list="cars" class="search">
+      <datalist id="cars">
+        <option :value="item" v-for="item in searchlist"></option>
+      </datalist>
+      <input type="button" class="add" @click="Admin_add" value="新增">
+    </div>
+    <div>
+      <table>
+        <tr>
+          <th></th>
+          <th>aid</th>
+          <th>sname</th>
+          <th>snum</th>
+          <th>category</th>
+        </tr>
+        <tr v-cloak v-for="(item ,index) of Admin_slist">
+          <td>{{index+1}}</td>
+          <td>{{item.aid}}</td>
+          <td>{{item.aname}}</td>
+          <td>{{item.password}}</td>
+          <td>
+            <a href="javascript:;" @click="Admin_showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="Admin_del(index)">删除</a>
+          </td>
+        </tr>
+      </table>
+    </div>
+    <br />
+    <br />
+
+    <model :list="Admin_selectedlist" :isactive="Admin_isActive" v-cloak @change="Admin_changeOverlay" @modify="Admin_modify"></model>
+  </div>
+
+  <br />
+  <br />
+
+</body>
+
+<!-- <script type="text/javascript" src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script> -->
+<script src='Vue.js'></script>
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+
+</html>
