@@ -1,23 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="dem.css">
-
-  <!-- import bootstrap-vue -->
-  <!-- <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.min.css" /> -->
-  <link type="text/css" rel="stylesheet" href="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.css" />
-
-  <!-- Load Vue followed by BootstrapVue -->
-  <script src="https://unpkg.com/vue@2.6.14/dist/vue.js"></script>
-  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue.min.js"></script>
-
-  <!-- Load the following for BootstrapVueIcons support -->
-  <script src="https://unpkg.com/bootstrap-vue@latest/dist/bootstrap-vue-icons.min.js"></script>
+    <meta charset="UTF-8">
+    <title>vue进行CURD操作</title>
+    <link rel="stylesheet" href="dem.css">
 </head>
 
 <body>
@@ -277,7 +263,8 @@
     <br />
     <br />
 
-    <model :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" :modify="modify"></model>
+    <model :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" @modify="modify"></model>
+    <!-- : 是绑定某个值； @是把事件绑定到某个方法 -->
   </div>
 
   <br />
@@ -285,7 +272,7 @@
 
 </body>
 
-<!-- <script type="text/javascript" src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script> -->
+<script type="text/javascript" src="https://unpkg.com/vue@2.3.4/dist/vue.js"></script>
 <script src='dem.js'></script>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
