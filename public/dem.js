@@ -142,13 +142,13 @@ var app = new Vue({
     
     // 修改数据
     showOverlay(index) {
+      console.log(index);
       this.selected = index;
       this.selectedlist = this.list[index];
       this.changeOverlay();
     },
     // 点击保存按钮
     modify(arr) {
-      console.log('123');
       if (this.selected > -1) {
         Vue.set(this.list, this.selected, arr);
         this.selected = -1;
@@ -175,7 +175,6 @@ var app = new Vue({
       this.setSlist(this.list);
     },
     changeOverlay() {
-      this.selected = -1;
       this.isActive = !this.isActive;
     },
     // 获取需要渲染到页面中的数据
