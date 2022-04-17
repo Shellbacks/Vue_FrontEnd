@@ -157,6 +157,7 @@ var app = new Vue({
       }
       this.setSlist(this.list);
       this.changeOverlay();
+      console.log("123")
     },
     add: function () {
       console.log(this.isActive);
@@ -180,6 +181,7 @@ var app = new Vue({
     // 获取需要渲染到页面中的数据
     setSlist(arr) {
       this.slist = JSON.parse(JSON.stringify(arr));
+      
     },
     // 搜索
     search(e) {
