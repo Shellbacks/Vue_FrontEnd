@@ -5,26 +5,45 @@ Vue.component('model', {
                   <h2 class="title">新增 | 修改</h2>
                   <div class="content">
                   <table>
-                      <tr>
-                          <td>用户名</td>
-                          <td><input type="text" v-model="modifylist.username"></td>
-                      </tr>
-                      <tr>
-                          <td>邮箱</td>
-                          <td><input type="text" v-model="modifylist.email"></td>
-                      </tr>
-                      <tr>
-                          <td>用户名</td>
-                          <td><input type="text" v-model="modifylist.username"></td>
-                      </tr>
-                      <tr>
-                          <td>用户名</td>
-                          <td><input type="text" v-model="modifylist.username"></td>
-                      </tr>
-                      <tr>
-                          <td>用户名</td>
-                          <td><input type="text" v-model="modifylist.username"></td>
-                      </tr>
+                  <tr>
+                  <td>用户名</td>
+                  <td><input type="text" v-model="modifylist.username"></td>
+              </tr>
+              <tr>
+                  <td>邮箱</td>
+                  <td><input type="text" v-model="modifylist.email"></td>
+              </tr>
+              <tr>
+                  <td>性别</td>
+                  <td>
+                      <label><input type="radio" name="sex" value="男" v-model="modifylist.sex">男</label>
+                      <label><input type="radio" name="sex" value="女" v-model="modifylist.sex">女</label>
+                      <label><input type="radio" name="sex" value="未知" v-model="modifylist.sex">未知</label>
+                  </td>
+              </tr>
+              <tr>
+                  <td>省份</td>
+                  <td>
+                      <select name="" id="" v-model="modifylist.province">
+                          <option value="北京市">北京市</option>
+                          <option value="河北省">河北省</option>
+                          <option value="河南省">河南省</option>
+                          <option value="重庆市">重庆市</option>
+                          <option value="广东省">广东省</option>
+                          <option value="辽宁省">辽宁省</option>
+                      </select>
+                  </td>
+              </tr>
+              <tr>
+                  <td>爱好</td>
+                  <td>
+                      <label><input type="checkbox" v-model="modifylist.hobby" value="篮球">篮球</label>
+                      <label><input type="checkbox" v-model="modifylist.hobby" value="读书">读书</label>
+                      <label><input type="checkbox" v-model="modifylist.hobby" value="插画">插画</label>
+                      <label><input type="checkbox" v-model="modifylist.hobby" value="编程">编程</label>
+                      <label><input type="checkbox" v-model="modifylist.hobby" value="弹琴">弹琴</label>
+                  </td>
+              </tr>
                   </table>
                   <p>
                   <input type="button" @click="changeActive" value="取消">
@@ -57,12 +76,7 @@ var app = new Vue({
     selectedlist: {},
     slist: [],
     searchlist: [],
-    items: [
-      { first_name: 'Dickerson', last_name: 'Macdonald' },
-      { first_name: 'Larsen', last_name: 'Shaw' },
-      { first_name: 'Geneva', last_name: 'Wilson' },
-      { first_name: 'Jami', last_name: 'Carney' }
-    ],
+    
     list: [{
       username: '刘柳',
       email: '123@qq.com',
@@ -134,6 +148,7 @@ var app = new Vue({
     },
     // 点击保存按钮
     modify(arr) {
+      console.log('123');
       if (this.selected > -1) {
         Vue.set(this.list, this.selected, arr);
         this.selected = -1;
@@ -144,6 +159,7 @@ var app = new Vue({
       this.changeOverlay();
     },
     add: function () {
+      console.log(this.isActive);
       this.selectedlist = {
         username: '',
         email: '',
