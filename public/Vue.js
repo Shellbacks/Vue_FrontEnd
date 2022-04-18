@@ -12,7 +12,61 @@ Vue.component('model', {
                       <tr>
                       <td>aname</td>
                       <td><input type="text" v-model="modifylist.aname"></td>
-                  </tr>
+                      </tr>
+                      <tr>
+                      <td>password</td>
+                      <td><input type="text" v-model="modifylist.password"></td>
+                      </tr>
+                      <tr>
+                      <td>addtime</td>
+                      <td><input type="text" v-model="modifylist.addtime"></td>
+                      </tr>
+                  </table>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+Vue.component('modell', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">新增</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                          <td>aid</td>
+                          <td><input type="text" v-model="modifylist.aid"></td>
+                      </tr>
+                      <tr>
+                      <td>aname</td>
+                      <td><input type="text" v-model="modifylist.aname"></td>
+                      </tr>
+                      <tr>
+                      <td>password</td>
+                      <td><input type="text" v-model="modifylist.password"></td>
+                      </tr>
+                      <tr>
+                      <td>addtime</td>
+                      <td><input type="text" v-model="modifylist.addtime"></td>
+                      </tr>
                   </table>
                   <p>
                   <input type="button" @click="changeActive" value="取消">
@@ -37,6 +91,7 @@ Vue.component('model', {
   }
 });
 
+
 var app = new Vue({
   el: '#app',
   data: {
@@ -46,6 +101,7 @@ var app = new Vue({
     // ------------------------------------------------------
     // Admin
     Admin_isActive: false,
+    Admin_isActive2: false,
     Admin_selected: -1,
     Admin_selectedlist: {},
     Admin_slist: [],
@@ -91,6 +147,7 @@ var app = new Vue({
     // ------------------------------------------------------
     // Customer
     Customer_isActive: false,
+    Customer_isActive2: false,
     Customer_selected: -1,
     Customer_selectedlist: {},
     Customer_slist: [],
@@ -99,6 +156,7 @@ var app = new Vue({
     // ------------------------------------------------------
     // Goods
     Goods_isActive: false,
+    Goods_isActive2: false,
     Goods_selected: -1,
     Goods_selectedlist: {},
     Goods_slist: [],
@@ -107,6 +165,7 @@ var app = new Vue({
     // ------------------------------------------------------
     // Logisitcs
     Logisitcs_isActive: false,
+    Logisitcs_isActive2: false,
     Logisitcs_selected: -1,
     Logisitcs_selectedlist: {},
     Logisitcs_slist: [],
@@ -115,6 +174,7 @@ var app = new Vue({
     // ------------------------------------------------------
     // Order
     Order_isActive: false,
+    Order_isActive2: false,
     Order_selected: -1,
     Order_selectedlist: {},
     Order_slist: [],
@@ -123,6 +183,7 @@ var app = new Vue({
     // ------------------------------------------------------
     // Shopuser
     Shopuser_isActive: false,
+    Shopuser_isActive2: false,
     Shopuser_selected: -1,
     Shopuser_selectedlist: {},
     Shopuser_slist: [],
@@ -131,6 +192,7 @@ var app = new Vue({
     // ------------------------------------------------------
     // Shop
     Shop_isActive: false,
+    Shop_isActive2: false,
     Shop_selected: -1,
     Shop_selectedlist: {},
     Shop_slist: [],
@@ -202,8 +264,26 @@ var app = new Vue({
       this.Admin_selectedlist = this.Admin_list[index];
       this.Admin_changeOverlay();
     },
-    // 点击保存按钮
+    // 点击修改的保存按钮
     Admin_modify(arr) {
+      var that = this;
+      if (this.Admin_selected > -1) {
+        Vue.set(this.Admin_list, this.Admin_selected, arr);
+        this.Admin_selected = -1;
+      } else {
+        this.Admin_list.push(arr);  //新增的数据存储在Admin_list里面
+      };
+      console.log("Admin_modify:")
+      console.log(arr)
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      //   console.log(res);
+      //   that.loadData();
+      // });
+      this.Admin_setSlist(this.Admin_list);
+      this.Admin_changeOverlay();
+    },
+    // 点击新增的保存按钮
+    Admin_modify2(arr) {
       var that = this;
       if (this.Admin_selected > -1) {
         Vue.set(this.Admin_list, this.Admin_selected, arr);
@@ -212,12 +292,14 @@ var app = new Vue({
         this.Admin_list.push(arr);  //新增的数据存储在Admin_list里面
         // this.Admin_add_list.push(arr);
       };
+      console.log("Admin_modify:")
+      console.log(arr)
       // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
       this.Admin_setSlist(this.Admin_list);
-      this.Admin_changeOverlay();
+      this.Admin_changeOverlay2();
     },
     // 增加函数
     Admin_add: function () {
@@ -227,14 +309,16 @@ var app = new Vue({
         password: '',
         addtime: '',
       };
-      this.Admin_isActive = true;
+      this.Admin_changeOverlay2();
     },
     // 删除函数
     Admin_del(index) {
       var that = this;
       this.Admin_list.splice(index, 1);
       this.Admin_setSlist(this.Admin_list);
-      // axios.post(this.baseurl + "/api/**************/", index).then(function (res) {
+      console.log("Admin_del:")
+      console.log(this.Admin_list.splice(index, 1))
+      // axios.post(this.baseurl + "/api/**************/", this.Admin_list.splice(index, 1)).then(function (res) {
       //   console.log(res);
       //   that.loadData();
       // });
@@ -242,6 +326,10 @@ var app = new Vue({
     Admin_changeOverlay() {
       // this.Admin_selected = -1;
       this.Admin_isActive = !this.Admin_isActive;
+    },
+    Admin_changeOverlay2() {
+      // this.Admin_selected = -1;
+      this.Admin_isActive2 = !this.Admin_isActive2;
     },
     // 获取需要渲染到页面中的数据
     Admin_setSlist(arr) {
@@ -298,6 +386,21 @@ var app = new Vue({
       this.Customer_setSlist(this.Customer_list);
       this.Customer_changeOverlay();
     },
+    Customer_modify2(arr) {
+      var that = this;
+      if (this.Customer_selected > -1) {
+        Vue.set(this.Customer_list, this.Customer_selected, arr);
+        this.Customer_selected = -1;
+      } else {
+        this.Customer_list.push(arr);  //新增的数据存储在Customer_list里面
+      };
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      //   console.log(res);
+      //   that.loadData();
+      // });
+      this.Customer_setSlist(this.Customer_list);
+      this.Customer_changeOverlay2();
+    },
     // 增加函数
     Customer_add: function () {
       this.Customer_selectedlist = {
@@ -306,14 +409,14 @@ var app = new Vue({
         password: '',
         cnumber: '',
       };
-      this.Customer_isActive = true;
+      this.Customer_changeOverlay2();
     },
     // 删除函数
     Customer_del(index) {
       var that = this;
       this.Customer_list.splice(index, 1);
       this.Customer_setSlist(this.Customer_list);
-      // axios.post(this.baseurl + "/api/**************/", index).then(function (res) {
+      // axios.post(this.baseurl + "/api/**************/", this.Customer_list.splice(index, 1)).then(function (res) {
       //   console.log(res);
       //   that.loadData();
       // });
@@ -321,6 +424,10 @@ var app = new Vue({
     Customer_changeOverlay() {
       // this.Customer_selected = -1;
       this.Customer_isActive = !this.Customer_isActive;
+    },
+    Customer_changeOverlay2() {
+      // this.Customer_selected = -1;
+      this.Customer_isActive2 = !this.Customer_isActive2;
     },
     // 获取需要渲染到页面中的数据
     Customer_setSlist(arr) {
@@ -354,8 +461,6 @@ var app = new Vue({
       }
     },
     //-----------------------------------------------------------------------------------
-    // Goods function ---------------------------------------------------
-    // 修改数据
     Goods_showOverlay(index) {
       this.Goods_selected = index;
       this.Goods_selectedlist = this.Goods_list[index];
@@ -377,6 +482,21 @@ var app = new Vue({
       this.Goods_setSlist(this.Goods_list);
       this.Goods_changeOverlay();
     },
+    Goods_modify2(arr) {
+      var that = this;
+      if (this.Goods_selected > -1) {
+        Vue.set(this.Goods_list, this.Goods_selected, arr);
+        this.Goods_selected = -1;
+      } else {
+        this.Goods_list.push(arr);  //新增的数据存储在Goods_list里面
+      };
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      //   console.log(res);
+      //   that.loadData();
+      // });
+      this.Goods_setSlist(this.Goods_list);
+      this.Goods_changeOverlay2();
+    },
     // 增加函数
     Goods_add: function () {
       this.Goods_selectedlist = {
@@ -387,14 +507,14 @@ var app = new Vue({
         inventory: '',
         price: '',
       };
-      this.Goods_isActive = true;
+      this.Goods_changeOverlay2();
     },
     // 删除函数
     Goods_del(index) {
       var that = this;
       this.Goods_list.splice(index, 1);
       this.Goods_setSlist(this.Goods_list);
-      // axios.post(this.baseurl + "/api/**************/", index).then(function (res) {
+      // axios.post(this.baseurl + "/api/**************/", this.Goods_list.splice(index, 1)).then(function (res) {
       //   console.log(res);
       //   that.loadData();
       // });
@@ -402,6 +522,10 @@ var app = new Vue({
     Goods_changeOverlay() {
       // this.Goods_selected = -1;
       this.Goods_isActive = !this.Goods_isActive;
+    },
+    Goods_changeOverlay2() {
+      // this.Goods_selected = -1;
+      this.Goods_isActive2 = !this.Goods_isActive2;
     },
     // 获取需要渲染到页面中的数据
     Goods_setSlist(arr) {
@@ -464,6 +588,21 @@ var app = new Vue({
       this.Logisitcs_setSlist(this.Logisitcs_list);
       this.Logisitcs_changeOverlay();
     },
+    Logisitcs_modify2(arr) {
+      var that = this;
+      if (this.Logisitcs_selected > -1) {
+        Vue.set(this.Logisitcs_list, this.Logisitcs_selected, arr);
+        this.Logisitcs_selected = -1;
+      } else {
+        this.Logisitcs_list.push(arr);  //新增的数据存储在Logisitcs_list里面
+      };
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      //   console.log(res);
+      //   that.loadData();
+      // });
+      this.Logisitcs_setSlist(this.Logisitcs_list);
+      this.Logisitcs_changeOverlay2();
+    },
     // 增加函数
     Logisitcs_add: function () {
       this.Logisitcs_selectedlist = {
@@ -476,7 +615,7 @@ var app = new Vue({
         state: '',
         addtime: '',
       };
-      this.Logisitcs_isActive = true;
+      this.Logisitcs_changeOverlay2();
     },
     // 删除函数
     Logisitcs_del(index) {
@@ -491,6 +630,10 @@ var app = new Vue({
     Logisitcs_changeOverlay() {
       // this.Logisitcs_selected = -1;
       this.Logisitcs_isActive = !this.Logisitcs_isActive;
+    },
+    Logisitcs_changeOverlay2() {
+      // this.Logisitcs_selected = -1;
+      this.Logisitcs_isActive2 = !this.Logisitcs_isActive2;
     },
     // 获取需要渲染到页面中的数据
     Logisitcs_setSlist(arr) {
@@ -552,6 +695,21 @@ var app = new Vue({
       this.Order_setSlist(this.Order_list);
       this.Order_changeOverlay();
     },
+    Order_modify2(arr) {
+      var that = this;
+      if (this.Order_selected > -1) {
+        Vue.set(this.Order_list, this.Order_selected, arr);
+        this.Order_selected = -1;
+      } else {
+        this.Order_list.push(arr);  //新增的数据存储在Order_list里面
+      };
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      //   console.log(res);
+      //   that.loadData();
+      // });
+      this.Order_setSlist(this.Order_list);
+      this.Order_changeOverlay2();
+    },
     // 增加函数
     Order_add: function () {
       this.Order_selectedlist = {
@@ -565,7 +723,7 @@ var app = new Vue({
         price: '',
         state: '',
       };
-      this.Order_isActive = true;
+      this.Order_changeOverlay2();
     },
     // 删除函数
     Order_del(index) {
@@ -580,6 +738,10 @@ var app = new Vue({
     Order_changeOverlay() {
       // this.Order_selected = -1;
       this.Order_isActive = !this.Order_isActive;
+    },
+    Order_changeOverlay2() {
+      // this.Order_selected = -1;
+      this.Order_isActive2 = !this.Order_isActive2;
     },
     // 获取需要渲染到页面中的数据
     Order_setSlist(arr) {
@@ -650,6 +812,22 @@ var app = new Vue({
       this.Shopuser_setSlist(this.Shopuser_list);
       this.Shopuser_changeOverlay();
     },
+    Shopuser_modify2(arr) {
+      var that = this;
+      if (this.Shopuser_selected > -1) {
+        Vue.set(this.Shopuser_list, this.Shopuser_selected, arr);
+        this.Shopuser_selected = -1;
+      } else {
+        this.Shopuser_list.push(arr);  //新增的数据存储在Shopuser_list里面
+      };
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      //   console.log(res);
+      //   that.loadData();
+      // });
+      this.Shopuser_setSlist(this.Shopuser_list);
+      this.Shopuser_changeOverlay2();
+    },
+
     // 增加函数
     Shopuser_add: function () {
       this.Shopuser_selectedlist = {
@@ -659,7 +837,7 @@ var app = new Vue({
         password: '',
         number: '',
       };
-      this.Shopuser_isActive = true;
+      this.Shopuser_changeOverlay2();
     },
     // 删除函数
     Shopuser_del(index) {
@@ -674,6 +852,10 @@ var app = new Vue({
     Shopuser_changeOverlay() {
       // this.Shopuser_selected = -1;
       this.Shopuser_isActive = !this.Shopuser_isActive;
+    },
+    Shopuser_changeOverlay2() {
+      // this.Shopuser_selected = -1;
+      this.Shopuser_isActive2 = !this.Shopuser_isActive2;
     },
     // 获取需要渲染到页面中的数据
     Shopuser_setSlist(arr) {
