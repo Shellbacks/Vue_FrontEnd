@@ -44,11 +44,11 @@ Vue.component('model', {
     }
   }
 });
-Vue.component('modell', {
+Vue.component('model2', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
-                  <h2 class="title">新增</h2>
+                  <h2 class="title">新增 | 修改</h2>
                   <div class="content">
                   <table>
                       <tr>
@@ -281,6 +281,7 @@ var app = new Vue({
       // });
       this.Admin_setSlist(this.Admin_list);
       this.Admin_changeOverlay();
+      console.log("1111")
     },
     // 点击新增的保存按钮
     Admin_modify2(arr) {
@@ -300,6 +301,7 @@ var app = new Vue({
       // });
       this.Admin_setSlist(this.Admin_list);
       this.Admin_changeOverlay2();
+      console.log("222222")
     },
     // 增加函数
     Admin_add: function () {
