@@ -44,52 +44,6 @@ Vue.component('model', {
     }
   }
 });
-Vue.component('modell', {
-  props: ['list', 'isactive'],
-  template: `<div class="overlay" v-show="isactive">
-                  <div class="con">
-                  <h2 class="title">新增</h2>
-                  <div class="content">
-                  <table>
-                      <tr>
-                          <td>aid</td>
-                          <td><input type="text" v-model="modifylist.aid"></td>
-                      </tr>
-                      <tr>
-                      <td>aname</td>
-                      <td><input type="text" v-model="modifylist.aname"></td>
-                      </tr>
-                      <tr>
-                      <td>password</td>
-                      <td><input type="text" v-model="modifylist.password"></td>
-                      </tr>
-                      <tr>
-                      <td>addtime</td>
-                      <td><input type="text" v-model="modifylist.addtime"></td>
-                      </tr>
-                  </table>
-                  <p>
-                  <input type="button" @click="changeActive" value="取消">
-                  <input type="button" @click="modify" value="保存">
-                  </p>
-                  </div>
-                  </div>
-              </div>`,
-
-  computed: {
-    modifylist() {
-      return this.list;
-    }
-  },
-  methods: {
-    changeActive() {
-      this.$emit('change');
-    },
-    modify() {
-      this.$emit('modify', this.modifylist);
-    }
-  }
-});
 
 
 var app = new Vue({
@@ -253,7 +207,7 @@ var app = new Vue({
       // });
 
 
-      this.Admin_setSlist(this.Admin_list)
+      this.Admin_setSlist(this.Admin_list) //用作自己设定数据的测试，到时候接后端要删掉
 
     },
 
