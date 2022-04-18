@@ -46,6 +46,7 @@ Vue.component('model1', {
   }
 });
 
+// Customer表————————————————————————————————————————————————————————————————————————————————————————————————
 Vue.component('model2', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
@@ -54,20 +55,20 @@ Vue.component('model2', {
                   <div class="content">
                   <table>
                       <tr>
-                          <td>aid</td>
-                          <td><input type="text" v-model="modifylist.aid"></td>
+                          <td>cid</td>
+                          <td><input type="text" v-model="modifylist.cid"></td>
                       </tr>
                       <tr>
-                      <td>aname</td>
-                      <td><input type="text" v-model="modifylist.aname"></td>
+                      <td>cname</td>
+                      <td><input type="text" v-model="modifylist.cname"></td>
                       </tr>
                       <tr>
                       <td>password</td>
                       <td><input type="text" v-model="modifylist.password"></td>
                       </tr>
                       <tr>
-                      <td>addtime</td>
-                      <td><input type="text" v-model="modifylist.addtime"></td>
+                      <td>cnumber</td>
+                      <td><input type="text" v-model="modifylist.cnumber"></td>
                       </tr>
                   </table>
                   <p>
@@ -93,7 +94,7 @@ Vue.component('model2', {
   }
 });
 
-// Customer表————————————————————————————————————————————————————————————————————————————————————————————————
+// Goods表————————————————————————————————————————————————————————————————————————————————————————————————
 Vue.component('model3', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
@@ -102,100 +103,6 @@ Vue.component('model3', {
                   <div class="content">
                   <table>
                       <tr>
-                          <td>cid</td>
-                          <td><input type="text" v-model="modifylist.cid"></td>
-                      </tr>
-                      <tr>
-                      <td>cname</td>
-                      <td><input type="text" v-model="modifylist.cname"></td>
-                      </tr>
-                      <tr>
-                      <td>password</td>
-                      <td><input type="text" v-model="modifylist.password"></td>
-                      </tr>
-                      <tr>
-                      <td>cnumber</td>
-                      <td><input type="text" v-model="modifylist.cnumber"></td>
-                      </tr>
-                  </table>
-                  <p>
-                  <input type="button" @click="changeActive" value="取消">
-                  <input type="button" @click="modify" value="保存">
-                  </p>
-                  </div>
-                  </div>
-              </div>`,
-
-  computed: {
-    modifylist() {
-      return this.list;
-    }
-  },
-  methods: {
-    changeActive() {
-      this.$emit('change');
-    },
-    modify() {
-      this.$emit('modify', this.modifylist);
-    }
-  }
-});
-
-Vue.component('model4', {
-  props: ['list', 'isactive'],
-  template: `<div class="overlay" v-show="isactive">
-                  <div class="con">
-                  <h2 class="title">Add | Modify</h2>
-                  <div class="content">
-                  <table>
-                      <tr>
-                          <td>cid</td>
-                          <td><input type="text" v-model="modifylist.cid"></td>
-                      </tr>
-                      <tr>
-                      <td>cname</td>
-                      <td><input type="text" v-model="modifylist.cname"></td>
-                      </tr>
-                      <tr>
-                      <td>password</td>
-                      <td><input type="text" v-model="modifylist.password"></td>
-                      </tr>
-                      <tr>
-                      <td>cnumber</td>
-                      <td><input type="text" v-model="modifylist.cnumber"></td>
-                      </tr>
-                  </table>
-                  <p>
-                  <input type="button" @click="changeActive" value="取消">
-                  <input type="button" @click="modify" value="保存">
-                  </p>
-                  </div>
-                  </div>
-              </div>`,
-
-  computed: {
-    modifylist() {
-      return this.list;
-    }
-  },
-  methods: {
-    changeActive() {
-      this.$emit('change');
-    },
-    modify() {
-      this.$emit('modify', this.modifylist);
-    }
-  }
-});
-// Goods表————————————————————————————————————————————————————————————————————————————————————————————————
-Vue.component('model5', {
-  props: ['list', 'isactive'],
-  template: `<div class="overlay" v-show="isactive">
-                  <div class="con">
-                  <h2 class="title">Add | Modify</h2>
-                  <div class="content">
-                  <table>
-                      <tr>
                           <td>gid</td>
                           <td><input type="text" v-model="modifylist.gid"></td>
                       </tr>
@@ -243,125 +150,8 @@ Vue.component('model5', {
   }
 });
 
-Vue.component('model6', {
-  props: ['list', 'isactive'],
-  template: `<div class="overlay" v-show="isactive">
-                  <div class="con">
-                  <h2 class="title">Add | Modify</h2>
-                  <div class="content">
-                  <table>
-                      <tr>
-                          <td>gid</td>
-                          <td><input type="text" v-model="modifylist.gid"></td>
-                      </tr>
-                      <tr>
-                      <td>sid</td>
-                      <td><input type="text" v-model="modifylist.sid"></td>
-                      </tr>
-                      <tr>
-                      <td>gname</td>
-                      <td><input type="text" v-model="modifylist.gname"></td>
-                      </tr>
-                      <tr>
-                      <td>category</td>
-                      <td><input type="text" v-model="modifylist.category"></td>
-                      </tr>
-                      <tr>
-                      <td>inventory</td>
-                      <td><input type="text" v-model="modifylist.inventory"></td>
-                      </tr>
-                      <tr>
-                      <td>price</td>
-                      <td><input type="text" v-model="modifylist.price"></td>
-                      </tr>
-                  </table>
-                  <p>
-                  <input type="button" @click="changeActive" value="取消">
-                  <input type="button" @click="modify" value="保存">
-                  </p>
-                  </div>
-                  </div>
-              </div>`,
-
-  computed: {
-    modifylist() {
-      return this.list;
-    }
-  },
-  methods: {
-    changeActive() {
-      this.$emit('change');
-    },
-    modify() {
-      this.$emit('modify', this.modifylist);
-    }
-  }
-});
 // Logistics表————————————————————————————————————————————————————————————————————————————————————————————————
-Vue.component('model7', {
-  props: ['list', 'isactive'],
-  template: `<div class="overlay" v-show="isactive">
-                  <div class="con">
-                  <h2 class="title">Add | Modify</h2>
-                  <div class="content">
-                  <table>
-                      <tr>
-                          <td>lid</td>
-                          <td><input type="text" v-model="modifylist.lid"></td>
-                      </tr>
-                      <tr>
-                      <td>cid</td>
-                      <td><input type="text" v-model="modifylist.cid"></td>
-                      </tr>
-                      <tr>
-                      <td>sid</td>
-                      <td><input type="text" v-model="modifylist.sid"></td>
-                      </tr>
-                      <tr>
-                      <td>number</td>
-                      <td><input type="text" v-model="modifylist.number"></td>
-                      </tr>
-                      <tr>
-                      <td>startad</td>
-                      <td><input type="text" v-model="modifylist.startad"></td>
-                      </tr>
-                      <tr>
-                      <td>endad</td>
-                      <td><input type="text" v-model="modifylist.endad"></td>
-                      </tr>
-                      <tr>
-                      <td>state</td>
-                      <td><input type="text" v-model="modifylist.state"></td>
-                      </tr>
-                      <tr>
-                      <td>addtime</td>
-                      <td><input type="text" v-model="modifylist.addtime"></td>
-                      </tr>
-                  </table>
-                  <p>
-                  <input type="button" @click="changeActive" value="取消">
-                  <input type="button" @click="modify" value="保存">
-                  </p>
-                  </div>
-                  </div>
-              </div>`,
-
-  computed: {
-    modifylist() {
-      return this.list;
-    }
-  },
-  methods: {
-    changeActive() {
-      this.$emit('change');
-    },
-    modify() {
-      this.$emit('modify', this.modifylist);
-    }
-  }
-});
-
-Vue.component('model8', {
+Vue.component('model4', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
@@ -425,74 +215,7 @@ Vue.component('model8', {
 });
 
 // Order_表————————————————————————————————————————————————————————————————————————————————————————————————
-Vue.component('model9', {
-  props: ['list', 'isactive'],
-  template: `<div class="overlay" v-show="isactive">
-                  <div class="con">
-                  <h2 class="title">Add | Modify</h2>
-                  <div class="content">
-                  <table>
-                      <tr>
-                          <td>oid</td>
-                          <td><input type="text" v-model="modifylist.oid"></td>
-                      </tr>
-                      <tr>
-                      <td>sid</td>
-                      <td><input type="text" v-model="modifylist.sid"></td>
-                      </tr>
-                      <tr>
-                      <td>cid</td>
-                      <td><input type="text" v-model="modifylist.cid"></td>
-                      </tr>
-                      <tr>
-                      <td>gid</td>
-                      <td><input type="text" v-model="modifylist.gid"></td>
-                      </tr>
-                      <tr>
-                      <td>lid</td>
-                      <td><input type="text" v-model="modifylist.lid"></td>
-                      </tr>
-                      <tr>
-                      <td>addtime</td>
-                      <td><input type="text" v-model="modifylist.addtime"></td>
-                      </tr>
-                      <tr>
-                      <td>number</td>
-                      <td><input type="text" v-model="modifylist.number"></td>
-                      </tr>
-                      <tr>
-                      <td>price</td>
-                      <td><input type="text" v-model="modifylist.price"></td>
-                      </tr>
-                      <tr>
-                      <td>state</td>
-                      <td><input type="text" v-model="modifylist.state"></td>
-                      </tr>
-                  </table>
-                  <p>
-                  <input type="button" @click="changeActive" value="取消">
-                  <input type="button" @click="modify" value="保存">
-                  </p>
-                  </div>
-                  </div>
-              </div>`,
-
-  computed: {
-    modifylist() {
-      return this.list;
-    }
-  },
-  methods: {
-    changeActive() {
-      this.$emit('change');
-    },
-    modify() {
-      this.$emit('modify', this.modifylist);
-    }
-  }
-});
-
-Vue.component('model10', {
+Vue.component('model5', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
@@ -560,7 +283,7 @@ Vue.component('model10', {
 });
 
 // Shop_user_表————————————————————————————————————————————————————————————————————————————————————————————————
-Vue.component('model11', {
+Vue.component('model6', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
@@ -587,6 +310,7 @@ Vue.component('model11', {
                       <td>number</td>
                       <td><input type="text" v-model="modifylist.number"></td>
                       </tr>
+                    </table>
                   <p>
                   <input type="button" @click="changeActive" value="取消">
                   <input type="button" @click="modify" value="保存">
@@ -609,57 +333,9 @@ Vue.component('model11', {
     }
   }
 });
-Vue.component('model12', {
-  props: ['list', 'isactive'],
-  template: `<div class="overlay" v-show="isactive">
-                  <div class="con">
-                  <h2 class="title">Add | Modify</h2>
-                  <div class="content">
-                  <table>
-                      <tr>
-                        <td>suid</td>
-                        <td><input type="text" v-model="modifylist.suid"></td>
-                      </tr>
-                      <tr>
-                      <td>sid</td>
-                      <td><input type="text" v-model="modifylist.sid"></td>
-                      </tr>
-                      <tr>
-                      <td>suname</td>
-                      <td><input type="text" v-model="modifylist.suname"></td>
-                      </tr>
-                      <tr>
-                      <td>password</td>
-                      <td><input type="text" v-model="modifylist.passwor"></td>
-                      </tr>
-                      <tr>
-                      <td>number</td>
-                      <td><input type="text" v-model="modifylist.number"></td>
-                      </tr>
-                  <p>
-                  <input type="button" @click="changeActive" value="取消">
-                  <input type="button" @click="modify" value="保存">
-                  </p>
-                  </div>
-                  </div>
-              </div>`,
 
-  computed: {
-    modifylist() {
-      return this.list;
-    }
-  },
-  methods: {
-    changeActive() {
-      this.$emit('change');
-    },
-    modify() {
-      this.$emit('modify', this.modifylist);
-    }
-  }
-});
 // Shop_表————————————————————————————————————————————————————————————————————————————————————————————————
-Vue.component('model13', {
+Vue.component('model7', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
@@ -682,51 +358,7 @@ Vue.component('model13', {
                       <td>category</td>
                       <td><input type="text" v-model="modifylist.category"></td>
                       </tr>
-                  <p>
-                  <input type="button" @click="changeActive" value="取消">
-                  <input type="button" @click="modify" value="保存">
-                  </p>
-                  </div>
-                  </div>
-              </div>`,
-
-  computed: {
-    modifylist() {
-      return this.list;
-    }
-  },
-  methods: {
-    changeActive() {
-      this.$emit('change');
-    },
-    modify() {
-      this.$emit('modify', this.modifylist);
-    }
-  }
-});
-Vue.component('model14', {
-  props: ['list', 'isactive'],
-  template: `<div class="overlay" v-show="isactive">
-                  <div class="con">
-                  <h2 class="title">Add | Modify</h2>
-                  <div class="content">
-                  <table>
-                      <tr>
-                        <td>sid</td>
-                        <td><input type="text" v-model="modifylist.sid"></td>
-                      </tr>
-                      <tr>
-                      <td>sname</td>
-                      <td><input type="text" v-model="modifylist.sname"></td>
-                      </tr>
-                      <tr>
-                      <td>snum</td>
-                      <td><input type="text" v-model="modifylist.snum"></td>
-                      </tr>
-                      <tr>
-                      <td>category</td>
-                      <td><input type="text" v-model="modifylist.category"></td>
-                      </tr>
+                  </table>
                   <p>
                   <input type="button" @click="changeActive" value="取消">
                   <input type="button" @click="modify" value="保存">
