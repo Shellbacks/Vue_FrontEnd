@@ -34,7 +34,7 @@
       <datalist id="cars">
         <option :value="item" v-for="item in searchlist"></option>
       </datalist>
-      <input type="button" class="add" @click="Admin_add" value="新增">
+      <input type="button" class="add" @click="Admin_add" value="Add">
     </div>
     <div>
       <table>
@@ -51,8 +51,8 @@
           <td>{{item.aname}}</td>
           <td>{{item.password}}</td>
           <td>
-            <a href="javascript:;" @click="Admin_showOverlay(index)">修改</a>
-            <a href="javascript:;" @click="Admin_del(index)">删除</a>
+            <a href="javascript:;" @click="Admin_showOverlay(index)">Modify</a>
+            <a href="javascript:;" @click="Admin_del(index)">Delete</a>
           </td>
         </tr>
       </table>

@@ -3,7 +3,7 @@ Vue.component('model1', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
-                  <h2 class="title">新增 | 修改</h2>
+                  <h2 class="title">Add | Modify</h2>
                   <div class="content">
                   <table>
                       <tr>
@@ -50,7 +50,7 @@ Vue.component('model2', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
-                  <h2 class="title">新增 | 修改</h2>
+                  <h2 class="title">Add | Modify</h2>
                   <div class="content">
                   <table>
                       <tr>
@@ -98,7 +98,7 @@ Vue.component('model3', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
-                  <h2 class="title">新增 | 修改</h2>
+                  <h2 class="title">Add | Modify</h2>
                   <div class="content">
                   <table>
                       <tr>
@@ -145,7 +145,7 @@ Vue.component('model4', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
-                  <h2 class="title">新增 | 修改</h2>
+                  <h2 class="title">Add | Modify</h2>
                   <div class="content">
                   <table>
                       <tr>
@@ -192,7 +192,7 @@ Vue.component('model5', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
-                  <h2 class="title">新增 | 修改</h2>
+                  <h2 class="title">Add | Modify</h2>
                   <div class="content">
                   <table>
                       <tr>
@@ -247,7 +247,7 @@ Vue.component('model6', {
   props: ['list', 'isactive'],
   template: `<div class="overlay" v-show="isactive">
                   <div class="con">
-                  <h2 class="title">新增 | 修改</h2>
+                  <h2 class="title">Add | Modify</h2>
                   <div class="content">
                   <table>
                       <tr>
@@ -275,6 +275,458 @@ Vue.component('model6', {
                       <td><input type="text" v-model="modifylist.price"></td>
                       </tr>
                   </table>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+// Logistics表————————————————————————————————————————————————————————————————————————————————————————————————
+Vue.component('model7', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">Add | Modify</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                          <td>lid</td>
+                          <td><input type="text" v-model="modifylist.lid"></td>
+                      </tr>
+                      <tr>
+                      <td>cid</td>
+                      <td><input type="text" v-model="modifylist.cid"></td>
+                      </tr>
+                      <tr>
+                      <td>sid</td>
+                      <td><input type="text" v-model="modifylist.sid"></td>
+                      </tr>
+                      <tr>
+                      <td>number</td>
+                      <td><input type="text" v-model="modifylist.number"></td>
+                      </tr>
+                      <tr>
+                      <td>startad</td>
+                      <td><input type="text" v-model="modifylist.startad"></td>
+                      </tr>
+                      <tr>
+                      <td>endad</td>
+                      <td><input type="text" v-model="modifylist.endad"></td>
+                      </tr>
+                      <tr>
+                      <td>state</td>
+                      <td><input type="text" v-model="modifylist.state"></td>
+                      </tr>
+                      <tr>
+                      <td>addtime</td>
+                      <td><input type="text" v-model="modifylist.addtime"></td>
+                      </tr>
+                  </table>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+
+Vue.component('model8', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">Add | Modify</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                          <td>lid</td>
+                          <td><input type="text" v-model="modifylist.lid"></td>
+                      </tr>
+                      <tr>
+                      <td>cid</td>
+                      <td><input type="text" v-model="modifylist.cid"></td>
+                      </tr>
+                      <tr>
+                      <td>sid</td>
+                      <td><input type="text" v-model="modifylist.sid"></td>
+                      </tr>
+                      <tr>
+                      <td>number</td>
+                      <td><input type="text" v-model="modifylist.number"></td>
+                      </tr>
+                      <tr>
+                      <td>startad</td>
+                      <td><input type="text" v-model="modifylist.startad"></td>
+                      </tr>
+                      <tr>
+                      <td>endad</td>
+                      <td><input type="text" v-model="modifylist.endad"></td>
+                      </tr>
+                      <tr>
+                      <td>state</td>
+                      <td><input type="text" v-model="modifylist.state"></td>
+                      </tr>
+                      <tr>
+                      <td>addtime</td>
+                      <td><input type="text" v-model="modifylist.addtime"></td>
+                      </tr>
+                  </table>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+
+// Order_表————————————————————————————————————————————————————————————————————————————————————————————————
+Vue.component('model9', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">Add | Modify</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                          <td>oid</td>
+                          <td><input type="text" v-model="modifylist.oid"></td>
+                      </tr>
+                      <tr>
+                      <td>sid</td>
+                      <td><input type="text" v-model="modifylist.sid"></td>
+                      </tr>
+                      <tr>
+                      <td>cid</td>
+                      <td><input type="text" v-model="modifylist.cid"></td>
+                      </tr>
+                      <tr>
+                      <td>gid</td>
+                      <td><input type="text" v-model="modifylist.gid"></td>
+                      </tr>
+                      <tr>
+                      <td>lid</td>
+                      <td><input type="text" v-model="modifylist.lid"></td>
+                      </tr>
+                      <tr>
+                      <td>addtime</td>
+                      <td><input type="text" v-model="modifylist.addtime"></td>
+                      </tr>
+                      <tr>
+                      <td>number</td>
+                      <td><input type="text" v-model="modifylist.number"></td>
+                      </tr>
+                      <tr>
+                      <td>price</td>
+                      <td><input type="text" v-model="modifylist.price"></td>
+                      </tr>
+                      <tr>
+                      <td>state</td>
+                      <td><input type="text" v-model="modifylist.state"></td>
+                      </tr>
+                  </table>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+
+Vue.component('model10', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">Add | Modify</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                          <td>oid</td>
+                          <td><input type="text" v-model="modifylist.oid"></td>
+                      </tr>
+                      <tr>
+                      <td>sid</td>
+                      <td><input type="text" v-model="modifylist.sid"></td>
+                      </tr>
+                      <tr>
+                      <td>cid</td>
+                      <td><input type="text" v-model="modifylist.cid"></td>
+                      </tr>
+                      <tr>
+                      <td>gid</td>
+                      <td><input type="text" v-model="modifylist.gid"></td>
+                      </tr>
+                      <tr>
+                      <td>lid</td>
+                      <td><input type="text" v-model="modifylist.lid"></td>
+                      </tr>
+                      <tr>
+                      <td>addtime</td>
+                      <td><input type="text" v-model="modifylist.addtime"></td>
+                      </tr>
+                      <tr>
+                      <td>number</td>
+                      <td><input type="text" v-model="modifylist.number"></td>
+                      </tr>
+                      <tr>
+                      <td>price</td>
+                      <td><input type="text" v-model="modifylist.price"></td>
+                      </tr>
+                      <tr>
+                      <td>state</td>
+                      <td><input type="text" v-model="modifylist.state"></td>
+                      </tr>
+                  </table>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+
+// Shop_user_表————————————————————————————————————————————————————————————————————————————————————————————————
+Vue.component('model11', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">Add | Modify</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                        <td>suid</td>
+                        <td><input type="text" v-model="modifylist.suid"></td>
+                      </tr>
+                      <tr>
+                      <td>sid</td>
+                      <td><input type="text" v-model="modifylist.sid"></td>
+                      </tr>
+                      <tr>
+                      <td>suname</td>
+                      <td><input type="text" v-model="modifylist.suname"></td>
+                      </tr>
+                      <tr>
+                      <td>password</td>
+                      <td><input type="text" v-model="modifylist.passwor"></td>
+                      </tr>
+                      <tr>
+                      <td>number</td>
+                      <td><input type="text" v-model="modifylist.number"></td>
+                      </tr>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+Vue.component('model12', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">Add | Modify</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                        <td>suid</td>
+                        <td><input type="text" v-model="modifylist.suid"></td>
+                      </tr>
+                      <tr>
+                      <td>sid</td>
+                      <td><input type="text" v-model="modifylist.sid"></td>
+                      </tr>
+                      <tr>
+                      <td>suname</td>
+                      <td><input type="text" v-model="modifylist.suname"></td>
+                      </tr>
+                      <tr>
+                      <td>password</td>
+                      <td><input type="text" v-model="modifylist.passwor"></td>
+                      </tr>
+                      <tr>
+                      <td>number</td>
+                      <td><input type="text" v-model="modifylist.number"></td>
+                      </tr>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+// Shop_表————————————————————————————————————————————————————————————————————————————————————————————————
+Vue.component('model13', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">Add | Modify</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                        <td>sid</td>
+                        <td><input type="text" v-model="modifylist.sid"></td>
+                      </tr>
+                      <tr>
+                      <td>sname</td>
+                      <td><input type="text" v-model="modifylist.sname"></td>
+                      </tr>
+                      <tr>
+                      <td>snum</td>
+                      <td><input type="text" v-model="modifylist.snum"></td>
+                      </tr>
+                      <tr>
+                      <td>category</td>
+                      <td><input type="text" v-model="modifylist.category"></td>
+                      </tr>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
+Vue.component('model14', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">Add | Modify</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                        <td>sid</td>
+                        <td><input type="text" v-model="modifylist.sid"></td>
+                      </tr>
+                      <tr>
+                      <td>sname</td>
+                      <td><input type="text" v-model="modifylist.sname"></td>
+                      </tr>
+                      <tr>
+                      <td>snum</td>
+                      <td><input type="text" v-model="modifylist.snum"></td>
+                      </tr>
+                      <tr>
+                      <td>category</td>
+                      <td><input type="text" v-model="modifylist.category"></td>
+                      </tr>
                   <p>
                   <input type="button" @click="changeActive" value="取消">
                   <input type="button" @click="modify" value="保存">
@@ -464,43 +916,43 @@ var app = new Vue({
     },
 
     // Admin function ---------------------------------------------------
-    // 修改数据
+    // Modify数据
     Admin_showOverlay(index) {
       this.Admin_selected = index;
       this.Admin_selectedlist = this.Admin_list[index];
       this.Admin_changeOverlay();
     },
-    // 点击修改的保存按钮
+    // 点击Modify的保存按钮
     Admin_modify(arr) {
       var that = this;
       if (this.Admin_selected > -1) {
         Vue.set(this.Admin_list, this.Admin_selected, arr);
         this.Admin_selected = -1;
       } else {
-        this.Admin_list.push(arr);  //新增的数据存储在Admin_list里面
+        this.Admin_list.push(arr);  //Add的数据存储在Admin_list里面
       };
       console.log("Admin_modify:")
       console.log(arr)
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
       this.Admin_setSlist(this.Admin_list);
       this.Admin_changeOverlay();
     },
-    // 点击新增的保存按钮
+    // 点击Add的保存按钮
     Admin_modify2(arr) {
       var that = this;
       if (this.Admin_selected > -1) {
         Vue.set(this.Admin_list, this.Admin_selected, arr);
         this.Admin_selected = -1;
       } else {
-        this.Admin_list.push(arr);  //新增的数据存储在Admin_list里面
+        this.Admin_list.push(arr);  //Add的数据存储在Admin_list里面
         // this.Admin_add_list.push(arr);
       };
       console.log("Admin_modify:")
       console.log(arr)
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -517,7 +969,7 @@ var app = new Vue({
       };
       this.Admin_changeOverlay2();
     },
-    // 删除函数
+    // Delete函数
     Admin_del(index) {
       var that = this;
       this.Admin_list.splice(index, 1);
@@ -570,7 +1022,7 @@ var app = new Vue({
     },
     //-----------------------------------------------------------------------------------
     // Customer function ---------------------------------------------------
-    // 修改数据
+    // Modify数据
     Customer_showOverlay(index) {
       this.Customer_selected = index;
       this.Customer_selectedlist = this.Customer_list[index];
@@ -583,9 +1035,9 @@ var app = new Vue({
         Vue.set(this.Customer_list, this.Customer_selected, arr);
         this.Customer_selected = -1;
       } else {
-        this.Customer_list.push(arr);  //新增的数据存储在Customer_list里面
+        this.Customer_list.push(arr);  //Add的数据存储在Customer_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -598,9 +1050,9 @@ var app = new Vue({
         Vue.set(this.Customer_list, this.Customer_selected, arr);
         this.Customer_selected = -1;
       } else {
-        this.Customer_list.push(arr);  //新增的数据存储在Customer_list里面
+        this.Customer_list.push(arr);  //Add的数据存储在Customer_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -617,7 +1069,7 @@ var app = new Vue({
       };
       this.Customer_changeOverlay2();
     },
-    // 删除函数
+    // Delete函数
     Customer_del(index) {
       var that = this;
       this.Customer_list.splice(index, 1);
@@ -679,9 +1131,9 @@ var app = new Vue({
         Vue.set(this.Goods_list, this.Goods_selected, arr);
         this.Goods_selected = -1;
       } else {
-        this.Goods_list.push(arr);  //新增的数据存储在Goods_list里面
+        this.Goods_list.push(arr);  //Add的数据存储在Goods_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -694,9 +1146,9 @@ var app = new Vue({
         Vue.set(this.Goods_list, this.Goods_selected, arr);
         this.Goods_selected = -1;
       } else {
-        this.Goods_list.push(arr);  //新增的数据存储在Goods_list里面
+        this.Goods_list.push(arr);  //Add的数据存储在Goods_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -715,7 +1167,7 @@ var app = new Vue({
       };
       this.Goods_changeOverlay2();
     },
-    // 删除函数
+    // Delete函数
     Goods_del(index) {
       var that = this;
       this.Goods_list.splice(index, 1);
@@ -772,7 +1224,7 @@ var app = new Vue({
     },
     //-----------------------------------------------------------------------------------
     // Logistics function ---------------------------------------------------
-    // 修改数据
+    // Modify数据
     Logistics_showOverlay(index) {
       this.Logistics_selected = index;
       this.Logistics_selectedlist = this.Logistics_list[index];
@@ -785,9 +1237,9 @@ var app = new Vue({
         Vue.set(this.Logistics_list, this.Logistics_selected, arr);
         this.Logistics_selected = -1;
       } else {
-        this.Logistics_list.push(arr);  //新增的数据存储在Logistics_list里面
+        this.Logistics_list.push(arr);  //Add的数据存储在Logistics_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -800,9 +1252,9 @@ var app = new Vue({
         Vue.set(this.Logistics_list, this.Logistics_selected, arr);
         this.Logistics_selected = -1;
       } else {
-        this.Logistics_list.push(arr);  //新增的数据存储在Logistics_list里面
+        this.Logistics_list.push(arr);  //Add的数据存储在Logistics_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -823,7 +1275,7 @@ var app = new Vue({
       };
       this.Logistics_changeOverlay2();
     },
-    // 删除函数
+    // Delete函数
     Logistics_del(index) {
       var that = this;
       this.Logistics_list.splice(index, 1);
@@ -879,7 +1331,7 @@ var app = new Vue({
     },
 
     // Order function ---------------------------------------------------
-    // 修改数据
+    // Modify数据
     Order_showOverlay(index) {
       this.Order_selected = index;
       this.Order_selectedlist = this.Order_list[index];
@@ -892,9 +1344,9 @@ var app = new Vue({
         Vue.set(this.Order_list, this.Order_selected, arr);
         this.Order_selected = -1;
       } else {
-        this.Order_list.push(arr);  //新增的数据存储在Order_list里面
+        this.Order_list.push(arr);  //Add的数据存储在Order_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -907,9 +1359,9 @@ var app = new Vue({
         Vue.set(this.Order_list, this.Order_selected, arr);
         this.Order_selected = -1;
       } else {
-        this.Order_list.push(arr);  //新增的数据存储在Order_list里面
+        this.Order_list.push(arr);  //Add的数据存储在Order_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -931,7 +1383,7 @@ var app = new Vue({
       };
       this.Order_changeOverlay2();
     },
-    // 删除函数
+    // Delete函数
     Order_del(index) {
       var that = this;
       this.Order_list.splice(index, 1);
@@ -996,7 +1448,7 @@ var app = new Vue({
       }
     },
     // Shopuser function ---------------------------------------------------
-    // 修改数据
+    // Modify数据
     Shopuser_showOverlay(index) {
       this.Shopuser_selected = index;
       this.Shopuser_selectedlist = this.Shopuser_list[index];
@@ -1009,9 +1461,9 @@ var app = new Vue({
         Vue.set(this.Shopuser_list, this.Shopuser_selected, arr);
         this.Shopuser_selected = -1;
       } else {
-        this.Shopuser_list.push(arr);  //新增的数据存储在Shopuser_list里面
+        this.Shopuser_list.push(arr);  //Add的数据存储在Shopuser_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -1024,9 +1476,9 @@ var app = new Vue({
         Vue.set(this.Shopuser_list, this.Shopuser_selected, arr);
         this.Shopuser_selected = -1;
       } else {
-        this.Shopuser_list.push(arr);  //新增的数据存储在Shopuser_list里面
+        this.Shopuser_list.push(arr);  //Add的数据存储在Shopuser_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -1045,7 +1497,7 @@ var app = new Vue({
       };
       this.Shopuser_changeOverlay2();
     },
-    // 删除函数
+    // Delete函数
     Shopuser_del(index) {
       var that = this;
       this.Shopuser_list.splice(index, 1);
@@ -1100,7 +1552,7 @@ var app = new Vue({
       }
     },
     // Shop function ---------------------------------------------------
-    // 修改数据
+    // Modify数据
     Shop_showOverlay(index) {
       this.Shop_selected = index;
       this.Shop_selectedlist = this.Shop_list[index];
@@ -1113,9 +1565,9 @@ var app = new Vue({
         Vue.set(this.Shop_list, this.Shop_selected, arr);
         this.Shop_selected = -1;
       } else {
-        this.Shop_list.push(arr);  //新增的数据存储在Shop_list里面
+        this.Shop_list.push(arr);  //Add的数据存储在Shop_list里面
       };
-      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
+      // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把Add的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
@@ -1132,7 +1584,7 @@ var app = new Vue({
       };
       this.Shop_isActive = true;
     },
-    // 删除函数
+    // Delete函数
     Shop_del(index) {
       var that = this;
       this.Shop_list.splice(index, 1);
