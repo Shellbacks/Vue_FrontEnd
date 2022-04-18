@@ -13,33 +13,33 @@
 
     <!-- <b-table striped hover :items="list"></b-table> -->
 
-    <!-- Admin -->
+    <!-- Admin-------------------------------------------------------------- -->
     <h1>Admin</h1>
     <div>
-      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <input type="text" placeholder="search" @input="Admin_search" list="cars" class="search">
       <datalist id="cars">
-        <option :value="item" v-for="item in searchlist"></option>
+        <option :value="item" v-for="item in Admin_searchlist"></option>
       </datalist>
-      <input type="button" class="add" @click="add" value="新增">
+      <input type="button" class="add" @click="Admin_add" value="新增">
     </div>
     <div>
       <table>
         <tr>
           <th></th>
           <th>aid</th>
-          <th>sname</th>
-          <th>snum</th>
-          <th>category</th>
+          <th>aname</th>
+          <th>password</th>
+          <th>addtime</th>
         </tr>
-        <tr v-cloak v-for="(item ,index) of slist">
+        <tr v-cloak v-for="(item ,index) of Admin_slist">
           <td>{{index+1}}</td>
-          <td>{{item.username}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.sex}}</td>
-          <td>{{item.province}}</td>
+          <td>{{item.aid}}</td>
+          <td>{{item.aname}}</td>
+          <td>{{item.password}}</td>
+          <td>{{item.addtime}}</td>
           <td>
-            <a href="javascript:;" @click="showOverlay(index)">修改</a>
-            <a href="javascript:;" @click="del(index)">删除</a>
+            <a href="javascript:;" @click="Admin_showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="Admin_del(index)">删除</a>
           </td>
         </tr>
       </table>
@@ -47,14 +47,14 @@
     <br />
     <br />
 
-    <!-- Customer -->
+    <!-- Customer-------------------------------------------------------------- -->
     <h1>Customer</h1>
     <div>
-      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <input type="text" placeholder="search" @input="Customer_search" list="cars" class="search">
       <datalist id="cars">
-        <option :value="item" v-for="item in searchlist"></option>
+        <option :value="item" v-for="item in Customer_searchlist"></option>
       </datalist>
-      <input type="button" class="add" @click="add" value="新增">
+      <input type="button" class="add" @click="Customer_add" value="新增">
     </div>
     <div>
       <table>
@@ -65,15 +65,15 @@
           <th>password</th>
           <th>cnumber</th>
         </tr>
-        <tr v-cloak v-for="(item ,index) of slist">
+        <tr v-cloak v-for="(item ,index) of Customer_slist">
           <td>{{index+1}}</td>
-          <td>{{item.username}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.sex}}</td>
-          <td>{{item.province}}</td>
+          <td>{{item.cid}}</td>
+          <td>{{item.cname}}</td>
+          <td>{{item.password}}</td>
+          <td>{{item.cnumber}}</td>
           <td>
-            <a href="javascript:;" @click="showOverlay(index)">修改</a>
-            <a href="javascript:;" @click="del(index)">删除</a>
+            <a href="javascript:;" @click="Customer_showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="Customer_del(index)">删除</a>
           </td>
         </tr>
       </table>
@@ -81,14 +81,14 @@
     <br />
     <br />
 
-    <!-- Goods -->
+    <!-- Goods-------------------------------------------------------------- -->
     <h1>Goods</h1>
     <div>
-      <input type="text" placeholder="search" @input="search" list="cars" class="search">
+      <input type="text" placeholder="search" @input="Goods_search" list="cars" class="search">
       <datalist id="cars">
-        <option :value="item" v-for="item in searchlist"></option>
+        <option :value="item" v-for="item in Goods_searchlist"></option>
       </datalist>
-      <input type="button" class="add" @click="add" value="新增">
+      <input type="button" class="add" @click="Goods_add" value="新增">
     </div>
     <div>
       <table>
@@ -101,15 +101,17 @@
           <th>inventory</th>
           <th>price</th>
         </tr>
-        <tr v-cloak v-for="(item ,index) of slist">
+        <tr v-cloak v-for="(item ,index) of Goods_slist">
           <td>{{index+1}}</td>
-          <td>{{item.username}}</td>
-          <td>{{item.email}}</td>
-          <td>{{item.sex}}</td>
-          <td>{{item.province}}</td>
+          <td>{{item.gid}}</td>
+          <td>{{item.sid}}</td>
+          <td>{{item.gname}}</td>
+          <td>{{item.category}}</td>
+          <td>{{item.inventory}}</td>
+          <td>{{item.price}}</td>
           <td>
-            <a href="javascript:;" @click="showOverlay(index)">修改</a>
-            <a href="javascript:;" @click="del(index)">删除</a>
+            <a href="javascript:;" @click="Goods_showOverlay(index)">修改</a>
+            <a href="javascript:;" @click="Goods_del(index)">删除</a>
           </td>
         </tr>
       </table>
@@ -117,7 +119,7 @@
     <br />
     <br />
 
-    <!-- Logistics -->
+    <!-- Logistics -------------------------------------------------------------- -->
     <h1>Logistics</h1>
     <div>
       <input type="text" placeholder="search" @input="search" list="cars" class="search">
@@ -155,7 +157,7 @@
     <br />
     <br />
 
-    <!-- Order -->
+    <!-- Order-------------------------------------------------------------- -->
     <h1>Order</h1>
     <div>
       <input type="text" placeholder="search" @input="search" list="cars" class="search">
@@ -194,7 +196,7 @@
     <br />
     <br />
 
-    <!-- Shop_user -->
+    <!-- Shop_user-------------------------------------------------------------- -->
     <h1>Shop_user</h1>
     <div>
       <input type="text" placeholder="search" @input="search" list="cars" class="search">
@@ -229,7 +231,7 @@
     <br />
     <br />
 
-    <!-- Shop -->
+    <!-- Shop-------------------------------------------------------------- -->
     <h1>Shop</h1>
     <div>
       <input type="text" placeholder="search" @input="search" list="cars" class="search">
@@ -262,8 +264,29 @@
     </div>
     <br />
     <br />
+    <!-- Admin-------------------------------------------------------------- -->
+    <model1 :list="Admin_selectedlist" :isactive="Admin_isActive" v-cloak @change="Admin_changeOverlay" @modify="Admin_modify"></model1>
+    <model2 :list="Admin_selectedlist" :isactive="Admin_isActive2" v-cloak @change="Admin_changeOverlay2" @modify="Admin_modify2"></model2>
+    <!-- Customer-------------------------------------------------------------- -->
+    <model3 :list="Customer_selectedlist" :isactive="Customer_isActive" v-cloak @change="Customer_changeOverlay" @modify="Customer_modify"></model3>
+    <model4 :list="Customer_selectedlist" :isactive="Customer_isActive2" v-cloak @change="Customer_changeOverlay2" @modify="Customer_modify2"></model4>
+    <!-- Goods-------------------------------------------------------------- -->
+    <model5 :list="Goods_selectedlist" :isactive="Goods_isActive" v-cloak @change="Goods_changeOverlay" @modify="Goods_modify"></model5>
+    <model6 :list="Goods_selectedlist" :isactive="Goods_isActive2" v-cloak @change="Goods_changeOverlay2" @modify="Goods_modify2"></model6>
 
-    <model :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" @modify="modify"></model>
+    <model7 :list="Logistics_selectedlist" :isactive="Logistics_isActive" v-cloak @change="Logistics_changeOverlay" @modify="Logistics_modify"></model7>
+    <model8 :list="Logistics_selectedlist" :isactive="Logistics_isActive2" v-cloak @change="Logistics_changeOverlay2" @modify="Logistics_modify2"></model8>
+
+    <model9 :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" @modify="modify"></model9>
+    <model10 :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" @modify="modify"></model10>
+
+    <model11 :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" @modify="modify"></model11>
+    <model12 :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" @modify="modify"></model12>
+
+    <model13 :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" @modify="modify"></model13>
+    <model14 :list="selectedlist" :isactive="isActive" v-cloak @change="changeOverlay" @modify="modify"></model14>
+
+
     <!-- : 是绑定某个值； @是把事件绑定到某个方法 -->
   </div>
 

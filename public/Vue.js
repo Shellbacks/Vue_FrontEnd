@@ -44,6 +44,52 @@ Vue.component('model', {
     }
   }
 });
+Vue.component('modell', {
+  props: ['list', 'isactive'],
+  template: `<div class="overlay" v-show="isactive">
+                  <div class="con">
+                  <h2 class="title">新增</h2>
+                  <div class="content">
+                  <table>
+                      <tr>
+                          <td>aid</td>
+                          <td><input type="text" v-model="modifylist.aid"></td>
+                      </tr>
+                      <tr>
+                      <td>aname</td>
+                      <td><input type="text" v-model="modifylist.aname"></td>
+                      </tr>
+                      <tr>
+                      <td>password</td>
+                      <td><input type="text" v-model="modifylist.password"></td>
+                      </tr>
+                      <tr>
+                      <td>addtime</td>
+                      <td><input type="text" v-model="modifylist.addtime"></td>
+                      </tr>
+                  </table>
+                  <p>
+                  <input type="button" @click="changeActive" value="取消">
+                  <input type="button" @click="modify" value="保存">
+                  </p>
+                  </div>
+                  </div>
+              </div>`,
+
+  computed: {
+    modifylist() {
+      return this.list;
+    }
+  },
+  methods: {
+    changeActive() {
+      this.$emit('change');
+    },
+    modify() {
+      this.$emit('modify', this.modifylist);
+    }
+  }
+});
 
 
 var app = new Vue({
@@ -117,14 +163,14 @@ var app = new Vue({
     Goods_searchlist: [],
     Goods_list: [],
     // ------------------------------------------------------
-    // Logisitcs
-    Logisitcs_isActive: false,
-    Logisitcs_isActive2: false,
-    Logisitcs_selected: -1,
-    Logisitcs_selectedlist: {},
-    Logisitcs_slist: [],
-    Logisitcs_searchlist: [],
-    Logisitcs_list: [],
+    // Logistics
+    Logistics_isActive: false,
+    Logistics_isActive2: false,
+    Logistics_selected: -1,
+    Logistics_selectedlist: {},
+    Logistics_slist: [],
+    Logistics_searchlist: [],
+    Logistics_list: [],
     // ------------------------------------------------------
     // Order
     Order_isActive: false,
@@ -181,9 +227,9 @@ var app = new Vue({
       // }, function (err) {
       //   console.log(err);
       // });
-      // axios.get(this.baseurl + "/api/**************/").then(function (res) {   // Logisitcs表
-      //   that.Logisitcs_list = res.data;
-      //   that.Logisitcs_setSlist(that.Logisitcs_list);
+      // axios.get(this.baseurl + "/api/**************/").then(function (res) {   // Logistics表
+      //   that.Logistics_list = res.data;
+      //   that.Logistics_setSlist(that.Logistics_list);
       // }, function (err) {
       //   console.log(err);
       // });
@@ -207,7 +253,7 @@ var app = new Vue({
       // });
 
 
-      this.Admin_setSlist(this.Admin_list) //用作自己设定数据的测试，到时候接后端要删掉
+      this.Admin_setSlist(this.Admin_list)
 
     },
 
@@ -519,47 +565,47 @@ var app = new Vue({
       }
     },
     //-----------------------------------------------------------------------------------
-    // Logisitcs function ---------------------------------------------------
+    // Logistics function ---------------------------------------------------
     // 修改数据
-    Logisitcs_showOverlay(index) {
-      this.Logisitcs_selected = index;
-      this.Logisitcs_selectedlist = this.Logisitcs_list[index];
-      this.Logisitcs_changeOverlay();
+    Logistics_showOverlay(index) {
+      this.Logistics_selected = index;
+      this.Logistics_selectedlist = this.Logistics_list[index];
+      this.Logistics_changeOverlay();
     },
     // 点击保存按钮
-    Logisitcs_modify(arr) {
+    Logistics_modify(arr) {
       var that = this;
-      if (this.Logisitcs_selected > -1) {
-        Vue.set(this.Logisitcs_list, this.Logisitcs_selected, arr);
-        this.Logisitcs_selected = -1;
+      if (this.Logistics_selected > -1) {
+        Vue.set(this.Logistics_list, this.Logistics_selected, arr);
+        this.Logistics_selected = -1;
       } else {
-        this.Logisitcs_list.push(arr);  //新增的数据存储在Logisitcs_list里面
+        this.Logistics_list.push(arr);  //新增的数据存储在Logistics_list里面
       };
       // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
-      this.Logisitcs_setSlist(this.Logisitcs_list);
-      this.Logisitcs_changeOverlay();
+      this.Logistics_setSlist(this.Logistics_list);
+      this.Logistics_changeOverlay();
     },
-    Logisitcs_modify2(arr) {
+    Logistics_modify2(arr) {
       var that = this;
-      if (this.Logisitcs_selected > -1) {
-        Vue.set(this.Logisitcs_list, this.Logisitcs_selected, arr);
-        this.Logisitcs_selected = -1;
+      if (this.Logistics_selected > -1) {
+        Vue.set(this.Logistics_list, this.Logistics_selected, arr);
+        this.Logistics_selected = -1;
       } else {
-        this.Logisitcs_list.push(arr);  //新增的数据存储在Logisitcs_list里面
+        this.Logistics_list.push(arr);  //新增的数据存储在Logistics_list里面
       };
       // axios.post(this.baseurl + "/api/**************/", arr).then(function (res) {        // 把新增的内容post到后台api
       //   console.log(res);
       //   that.loadData();
       // });
-      this.Logisitcs_setSlist(this.Logisitcs_list);
-      this.Logisitcs_changeOverlay2();
+      this.Logistics_setSlist(this.Logistics_list);
+      this.Logistics_changeOverlay2();
     },
     // 增加函数
-    Logisitcs_add: function () {
-      this.Logisitcs_selectedlist = {
+    Logistics_add: function () {
+      this.Logistics_selectedlist = {
         lid: '',
         cid: '',
         sid: '',
@@ -569,60 +615,60 @@ var app = new Vue({
         state: '',
         addtime: '',
       };
-      this.Logisitcs_changeOverlay2();
+      this.Logistics_changeOverlay2();
     },
     // 删除函数
-    Logisitcs_del(index) {
+    Logistics_del(index) {
       var that = this;
-      this.Logisitcs_list.splice(index, 1);
-      this.Logisitcs_setSlist(this.Logisitcs_list);
+      this.Logistics_list.splice(index, 1);
+      this.Logistics_setSlist(this.Logistics_list);
       // axios.post(this.baseurl + "/api/**************/", index).then(function (res) {
       //   console.log(res);
       //   that.loadData();
       // });
     },
-    Logisitcs_changeOverlay() {
-      // this.Logisitcs_selected = -1;
-      this.Logisitcs_isActive = !this.Logisitcs_isActive;
+    Logistics_changeOverlay() {
+      // this.Logistics_selected = -1;
+      this.Logistics_isActive = !this.Logistics_isActive;
     },
-    Logisitcs_changeOverlay2() {
-      // this.Logisitcs_selected = -1;
-      this.Logisitcs_isActive2 = !this.Logisitcs_isActive2;
+    Logistics_changeOverlay2() {
+      // this.Logistics_selected = -1;
+      this.Logistics_isActive2 = !this.Logistics_isActive2;
     },
     // 获取需要渲染到页面中的数据
-    Logisitcs_setSlist(arr) {
-      this.Logisitcs_slist = JSON.parse(JSON.stringify(arr));
+    Logistics_setSlist(arr) {
+      this.Logistics_slist = JSON.parse(JSON.stringify(arr));
     },
     // 搜索
-    Logisitcs_search(e) {
+    Logistics_search(e) {
       var v = e.target.value,
         self = this;
-      self.Logisitcs_searchlist = [];
+      self.Logistics_searchlist = [];
       if (v) {
         var ss = [];
         // 过滤需要的数据
-        this.Logisitcs_list.forEach(function (item) {
+        this.Logistics_list.forEach(function (item) {
           if (item.lid.indexOf(v) > -1) {
-            if (self.Logisitcs_searchlist.indexOf(item.lid) == -1) {
-              self.Logisitcs_searchlist.push(item.lid);
+            if (self.Logistics_searchlist.indexOf(item.lid) == -1) {
+              self.Logistics_searchlist.push(item.lid);
             }
             ss.push(item);
           } else if (item.cid.indexOf(v) > -1) {
-            if (self.Logisitcs_searchlist.indexOf(item.cid) == -1) {
-              self.Logisitcs_searchlist.push(item.cid);
+            if (self.Logistics_searchlist.indexOf(item.cid) == -1) {
+              self.Logistics_searchlist.push(item.cid);
             }
             ss.push(item);
           } else if (item.sid.indexOf(v) > -1) {
-            if (self.Logisitcs_searchlist.indexOf(item.sid) == -1) {
-              self.Logisitcs_searchlist.push(item.sid);
+            if (self.Logistics_searchlist.indexOf(item.sid) == -1) {
+              self.Logistics_searchlist.push(item.sid);
             }
             ss.push(item);
           }
         });
-        this.Logisitcs_setSlist(ss); // 将过滤后的数据给了slist
+        this.Logistics_setSlist(ss); // 将过滤后的数据给了slist
       } else {
         // 没有搜索内容，则展示全部数据
-        this.Logisitcs_setSlist(this.Logisitcs_list);
+        this.Logistics_setSlist(this.Logistics_list);
       }
     },
 
